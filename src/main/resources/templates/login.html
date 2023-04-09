@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+<h1>Login</h1>
+<div th:if="${error}" style="color: red;" th:text="${error}"></div>
+<form th:action="@{/login}" th:object="${loginForm}" method="post" onsubmit="return validateLoginForm();">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" th:field="*{username}" />
+    <br />
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" th:field="*{password}" />
+    <br />
+    <input type="submit" value="Login" />
+</form>
+
+<script>
+
+
+    function validateLoginForm() {
+        debugger;
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+
+        if (username == "") {
+
+            alert("Vui lòng nhập tài khoản.");
+            return false;
+        }
+
+        if (password == "") {
+            alert("Vui lòng nhập mật khẩu.");
+            return false;
+        }
+
+        return true;
+    }
+</script>
+
+
+</body>
+
+</html>
